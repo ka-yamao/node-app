@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>お気に入り登録</title>
+</head>
+<body>
+    <p>お気に入り登録</p>
+    <script>
+        // ローカルストレージに登録
+        function save(id){
+            if (localStorage.getItem("clip") == null || localStorage.getItem("clip") === "undefined") {
+                localStorage.setItem("clip", id);
+            } else {
+                var ids = localStorage.getItem("clip") + "," + id;
+                localStorage.setItem("clip", ids);
+            }
+            return localStorage.getItem("clip");
+        };
+
+        // ブリッチの「android」オブジェクトを使うパターン
+        function clip1(id){
+            android.showToast("clip1 save ID:" + save(id));
+        };
+
+        // 「android」オブジェクトはJava側から実行する用
+        function clip2(id){
+            return "clip2 save ID:" + save(id);
+        };
+        
+    </script>
+</body>
+</html>
